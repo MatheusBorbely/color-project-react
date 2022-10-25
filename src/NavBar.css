@@ -49,6 +49,9 @@
     border: 2px solid green;
     box-shadow: none;
 }
-.slider-container{
-
+.changeColor-container{
+    margin-right: 10px;
+}
+.MuiInputBase-root{
+    min-width: 100px;
 }
