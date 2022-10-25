@@ -1,0 +1,54 @@
+.NavBar-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.level-container{
+    display: flex;
+    gap: 10px;
+}
+.slider-container{
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+.logo {
+    padding: 20px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e2e2e2;
+    font-size: 17px;
+}
+.logo a{
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+}
+.slider{
+    width: 340px;
+    margin: 10px 5px;
+}
+.rc-slider-track {
+    position: absolute;
+    height: 4px;
+    background-color: none;
+    border-radius: 6px;
+    background-image: bac;
+    background: linear-gradient(90deg, rgba(243,156,18,1) 0%, rgba(93,18,243,1) 44%, rgba(0,255,21,0.8659664549413515) 82%);
+}
+
+.rc-slider-handle,
+.rc-slider-handle:hover,
+.rc-slider-handle:active,
+.rc-slider-handle:focus
+{
+    background-color: green;
+    outline: none;
+    border: 2px solid green;
+    box-shadow: none;
+}
+.slider-container{
+
+}
