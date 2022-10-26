@@ -1,3 +1,4 @@
+
 .NavBar-container{
     display: flex;
     justify-content: space-between;
@@ -14,7 +15,7 @@
     align-items: center;
 }
 .logo {
-    padding: 20px 50px;
+    padding: 14px 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,7 +29,7 @@
 }
 .slider{
     width: 340px;
-    margin: 10px 5px;
+    margin: 0px 5px;
 }
 .rc-slider-track {
     position: absolute;
@@ -51,7 +52,14 @@
 }
 .changeColor-container{
     margin-right: 10px;
+    display: flex;
+    align-items: center;
 }
 .MuiInputBase-root{
     min-width: 100px;
+}
+.MuiSelect-select {
+    padding: 10px 10px !important;
+    padding-right: 32px !important;
+    font-size: 14px !important;
 }

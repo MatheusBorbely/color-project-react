@@ -2,27 +2,28 @@ import { React, Component } from "react";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import "./NavBar.css";
+import { Link } from "react-router-dom";
 
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select from '@mui/material/Select';
+import { Snackbar } from "@mui/material";
+import {Button} from "@mui/material";
+
 
 class NavBar extends Component{
     constructor(props){
         super(props);
-        
+        this.state = {changed: false}
     }
 
     render(){
-        const {level, changeLevel} = this.props;
+        const {level, changeLevel, handleChange, format, changed, closeSnackerBar} = this.props;
         return(
             <header className="NavBar">
                 <div className="NavBar-container">
                     <div className="level-container">
                         <div className="logo">
-                            <a href="#">BorbelyApp</a>
+                            <Link to="/">BorbelyApp</Link>
                         </div>
                         <div className="slider-container">
                             <span>Level: {level}</span>
@@ -38,7 +39,7 @@ class NavBar extends Component{
                         </div>
                     </div>
                     <div className="changeColor-container">
-                        <Select>
+                        <Select value={format} onChange={handleChange}>
 
                             <MenuItem value="hex">HEX - #FFFFF</MenuItem>
                             <MenuItem value="rgb">RGB- rgb(255,255,255)</MenuItem>
@@ -47,6 +48,16 @@ class NavBar extends Component{
                         </Select>
                     </div>
                 </div>   
+                <Snackbar anchorOrigin={{vertical: "bottom", horizontal: "left"}} 
+                    open={changed} 
+                    message={`Formato mudado para ${format}`} 
+                    autoHideDuration={6000}
+                    action={[
+                        <Button onClick={closeSnackerBar} color="inherit" size="small">
+                            X
+                        </Button>
+                    ]}
+                    />
             </header>
         );
     }
