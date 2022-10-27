@@ -4,6 +4,7 @@ import Palette from "./components/Palette/Palette";
 import {generatePalette} from "./components/util/colorHelpers";
 import { Route, Routes, useParams } from 'react-router-dom';
 import PaletteList from "./components/Palette/PaletteList";
+import GlobalStyle from "./gobalStyles";
 
 function App(){
 
@@ -16,10 +17,13 @@ function App(){
       return <Palette palette={generatePalette(findPalette(id))} />;
   };
   return (
+    <>
+    <GlobalStyle/>
     <Routes>
       <Route exact path="/" element={<PaletteList palettes={seedColors}/>} />
       <Route exact path="/palette/:id" element={ <PaletteComponentWrapper />} />
-    </Routes>    
+    </Routes> 
+    </>   
   );
 }
 
