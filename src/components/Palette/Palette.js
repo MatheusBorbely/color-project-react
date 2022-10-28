@@ -12,7 +12,7 @@ function Palette(props){
     }
     const changeFormat = (e) => {
         setFormat(e.target.value);
-        setChanged(true, setTimeout(() =>  this.setState({changed:false}), 3000))  
+        setChanged(true, setTimeout(() =>  setChanged(false), 3000))  
     }
     const closeSnackerBar = () => {
        setChanged(false)
