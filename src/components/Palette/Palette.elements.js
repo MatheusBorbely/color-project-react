@@ -11,5 +11,5 @@ export const PaletteColors = styled.div`
     height: 90%;
     display: flex;
     flex-wrap: wrap; 
-    gap: 10px;
+
 `;

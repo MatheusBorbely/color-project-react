@@ -7,7 +7,7 @@ import { ColorBoxBtn,ColorBoxBtnWrapper,
          ColorBoxInfoName,ColorBoxInfoMore,
          ColorBoxOverlay,ColorBoxMgsWrapper,
          ColorBoxMgsTitle,ColorBoxMgsSubtitle } from "./ColorBox.elements";
-
+import { Link } from "react-router-dom";
 
 function ColorBox(props){
 
@@ -41,9 +41,11 @@ function ColorBox(props){
                     <ColorBoxInfoName>
                         {name}
                     </ColorBoxInfoName>
-                    <ColorBoxInfoMore>
-                        MORE
-                    </ColorBoxInfoMore>
+                    <Link to="/" onClick={(e) => e.stopPropagation()}>
+                        <ColorBoxInfoMore>
+                            MORE
+                        </ColorBoxInfoMore>
+                    </Link>
                 </ColorBoxInfoWrapper>
 
             </ColorBoxContainer>
