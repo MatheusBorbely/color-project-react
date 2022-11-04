@@ -3,7 +3,7 @@ import seedColors from "./components/util/seedColors";
 import Palette from "./components/Palette/Palette";
 import {generatePalette} from "./components/util/colorHelpers";
 import { Route, Routes, useParams } from 'react-router-dom';
-import Index from "./components/Palette/Index";
+import PaletteList from "./components/Palette/PaletteList";
 import GlobalStyle from "./gobalStyles";
 
 function App(){
@@ -20,7 +20,7 @@ function App(){
     <>
     <GlobalStyle/>
     <Routes>
-      <Route exact path="/" element={<Index palettes={seedColors}/>} />
+      <Route exact path="/" element={<PaletteList palettes={seedColors}/>} />
       <Route exact path="/palette/:id" element={ <PaletteComponentWrapper />} />
     </Routes> 
     </>   

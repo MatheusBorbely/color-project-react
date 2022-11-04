@@ -3,16 +3,21 @@ import {    MiniPaletteContainer,
             MiniPaletteColors,
             MiniPaletteWrapper,
             MiniPaletteName,
-            MiniPaletteIcon
+            MiniPaletteIcon,
+            MiniPaletteColorsBox
         } from "./MiniPalette.elements";
 
 function MiniPalette(props){
-    const {paletteName, emoji} = props;
+    const {paletteName, emoji, colors, goToPalette, id} = props;
+    const miniColors = colors.map( (c) => <MiniPaletteColors background={c.color}/>)
+    const handleClick = () => {
+        goToPalette(id);
+    }
     return (
-        <MiniPaletteContainer>
-            <MiniPaletteColors>
-
-            </MiniPaletteColors>
+        <MiniPaletteContainer onClick={handleClick}>
+            <MiniPaletteColorsBox>
+                {miniColors}
+            </MiniPaletteColorsBox>
             <MiniPaletteWrapper>
                 <MiniPaletteName>
                     {paletteName}
