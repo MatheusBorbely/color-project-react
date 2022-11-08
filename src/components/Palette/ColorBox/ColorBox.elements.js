@@ -104,13 +104,18 @@ export const ColorBoxInfoName = styled.span`
 `;
 
 export const ColorBoxInfoMore = styled.span`
-    background-color: rgba(255,255,255, 0.3);
-    color: white;
-    font-size: 12px;
-    width: 60px;
-    text-align: center;
-    height: 30px;
-    line-height: 30px;
+    
+    & a {
+        text-decoration: none;
+        background-color: rgba(255,255,255, 0.3);
+        color: white;
+        font-size: 12px;
+        width: 60px;
+        text-align: center;
+        height: 30px;
+        line-height: 30px;
+        display: block;
+    }
     
 `;
 

@@ -5,6 +5,7 @@ import Footer from "../Footer/Footer.js";
 import {Palettes,
         PaletteColors,
         } from "./Palette.elements";
+import { color } from "@mui/system";
 
 function Palette(props){
     const changeLevel = (level) => {
@@ -20,10 +21,10 @@ function Palette(props){
     const [level,setLevel] = useState(500);
     const [format,setFormat] = useState('hex');
     const [changed,setChanged] = useState(false);
-    const {colors, paletteName, emoji} = props.palette;
+    const {colors, paletteName, emoji, id} = props.palette;
 
     const colorBoxes = colors[level].map( c => (
-        <ColorBox key={c.id} background={c[format]} name={c.name}/>
+        <ColorBox key={c.id} background={c[format]} name={c.name} moreUrl={`/palette/${id}/${c.id}`}/>
     ));
 
     return(
