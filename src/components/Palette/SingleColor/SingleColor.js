@@ -14,7 +14,10 @@ function SingleColor(props) {
         }
         return shades.slice(1);
     }
-    let {palettes, setPalettes} = useState(getShades(palette,colorId));
+    const {shades, setShades} = useState(getShades(palette,colorId));
+    const colorBoxes = shades.map( c => {
+        <ColorBox key={c.id} background={c.hex} name={c.name}/>
+    })
     return (
         <SingleColorContainer>
            
