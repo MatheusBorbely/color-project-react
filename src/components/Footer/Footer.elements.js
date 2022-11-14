@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const FooterContainer = styled.section`
+export const FooterContainer = styled.footer`
     height: 5vh;
     display: flex;
     gap: 10px;

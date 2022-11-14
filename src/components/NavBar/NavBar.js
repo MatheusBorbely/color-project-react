@@ -20,7 +20,7 @@ import "rc-slider/assets/index.css";
 import { Link } from "react-router-dom";
 
 function NavBar(props){
-    const {level, changeLevel, handleChange, format, changed, closeSnackerBar} = props;
+    const {level, changeLevel, handleChange, format, changed, closeSnackerBar, showLevel} = props;
     return(
         <Nav>
             <NavbarContainer>
@@ -28,18 +28,20 @@ function NavBar(props){
                     <NavLogo>
                         <Link to="/">BorbelyApp</Link>
                     </NavLogo>
-                    <NavSlider>
-                        <NavLevelCurrent>Level: {level}</NavLevelCurrent>
-                        <SliderComponent>
-                            <Slider 
-                                defaultValue={level} 
-                                min={100} 
-                                max={900}
-                                step={100}
-                                onAfterChange={changeLevel}
-                            />
-                        </SliderComponent>
-                    </NavSlider>
+                    {showLevel && 
+                        <NavSlider>
+                            <NavLevelCurrent>Level: {level}</NavLevelCurrent>
+                            <SliderComponent>
+                                <Slider 
+                                    defaultValue={level} 
+                                    min={100} 
+                                    max={900}
+                                    step={100}
+                                    onAfterChange={changeLevel}
+                                />
+                            </SliderComponent>
+                        </NavSlider>
+                    }
                 </NavbarLevel>
                 <NavSelect>
                     <Select value={format} onChange={handleChange}>

@@ -62,7 +62,7 @@ export const ColorBoxBtn = styled.button`
     font-size: 12px;
 `;
 
-export const ColorBoxContainer = styled.section`
+export const ColorBoxContainer = styled.div`
     width: 20%;
     height: 25%;
     cursor: pointer;

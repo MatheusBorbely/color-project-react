@@ -1,27 +1,58 @@
 import {React, useState} from "react";
-import { SingleColorContainer } from "./SingleColor.elements";
+import { SingleColorContainer, SingleColorBoxes, SingleColorGoBack, SingleColorGoBackBtn } from "./SingleColor.elements";
+import ColorBox from "../ColorBox/ColorBox.js";
+import NavBar from "../../NavBar/NavBar";
+import Footer from "../../Footer/Footer";
+import { Link } from "react-router-dom";
+
 
 function SingleColor(props) {
+
     const {palette, colorId} = props;
+
     const getShades = (palette, colorId) => {
-        let shades = [];
+        let allShades = [];
         let paletteColors = palette.colors;
         
         for(let key in paletteColors){
-            shades = shades.concat(
+            allShades = allShades.concat(
                 paletteColors[key].filter(c => c.id === colorId)
             )
         }
-        return shades.slice(1);
+        return allShades.slice(1);
     }
-    const {shades, setShades} = useState(getShades(palette,colorId));
-    const colorBoxes = shades.map( c => {
-        <ColorBox key={c.id} background={c.hex} name={c.name}/>
-    })
+     const changeFormat = (e) => {
+         setFormat(e.target.value);
+         setChanged(true, setTimeout(() =>  setChanged(false), 3000))  
+     }
+     const closeSnackerBar = () => {
+        setChanged(false)
+     }
+
+    const [format,setFormat] = useState('hex');
+    const [changed,setChanged] = useState(false);
+    const [shades,] = useState(getShades(palette,colorId));
+
+    const colorBoxes = shades.map( c => (
+        <ColorBox key={c.name} background={c[format]} name={c.name} showLink={false} />
+    ))
     return (
-        <SingleColorContainer>
-           
-        </SingleColorContainer>
+        <>
+            
+            <SingleColorContainer>
+                <NavBar handleChange={changeFormat} format={format} changed={changed} closeSnackerBar={closeSnackerBar} showLevel={false} />
+                <SingleColorBoxes>
+                    {colorBoxes}
+                    <SingleColorGoBack>
+                        <Link to={`/palette/${palette.id}`}>
+                            <SingleColorGoBackBtn>Go Back</SingleColorGoBackBtn>
+                        </Link>
+                    </SingleColorGoBack>
+                </SingleColorBoxes>
+                <Footer name={palette.paletteName} emoji={palette.emoji}/>
+            </SingleColorContainer>
+            
+        </>
     );
     
 }

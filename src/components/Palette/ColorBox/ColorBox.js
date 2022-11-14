@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 function ColorBox(props){
 
     const [isOverlay,setIsOverley] = useState(false);
-    const {background, name, moreUrl} = props;
+    const {background, name, moreUrl, showLink} = props;
 
     const changeOverlayState = () => {
         setIsOverley(!isOverlay, 
@@ -42,9 +42,11 @@ function ColorBox(props){
                         {name}
                     </ColorBoxInfoName>
                     <ColorBoxInfoMore>
-                        <Link to={moreUrl} onClick={(e) => e.stopPropagation()}>        
-                                MORE
-                        </Link>
+                        {showLink && 
+                            <Link to={moreUrl} onClick={(e) => e.stopPropagation()}>        
+                                    MORE
+                            </Link>
+                        }
                     </ColorBoxInfoMore>
                 </ColorBoxInfoWrapper>
 
