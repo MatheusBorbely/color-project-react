@@ -54,7 +54,7 @@ export const ColorBoxBtn = styled.button`
     outline: none;
     background-color: rgba(255,255,255, 0.3);
     font-size: 1rem;
-    color: white;
+    color : ${props => props.color ? '#FFF' : '#000'};
     opacity: 0;
     border: none;
     line-height: 30px;
@@ -83,6 +83,7 @@ export const ColorBoxBtnWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: flex-end;
+    
 `;
 
 
@@ -96,10 +97,10 @@ export const ColorBoxInfoWrapper = styled.div`
 `;
 
 export const ColorBoxInfoName = styled.span`
-    color: black;
     letter-spacing: 1px;
     padding: 10px;
     font-size: 12px;
+    color : ${props => props.color ? '#FFF' : '#000'};
     
 `;
 
@@ -115,6 +116,7 @@ export const ColorBoxInfoMore = styled.span`
         height: 30px;
         line-height: 30px;
         display: block;
+        color : ${props => props.color ? '#FFF' : '#000'};
     }
     
 `;
@@ -145,7 +147,7 @@ export const ColorBoxMgsTitle = styled.h2`
     text-shadow: 1px 2px black;
     font-weight: 400;
     font-size: 4rem;
-    color: white;
+    color : ${props => props.color ? '#FFF' : '#000'};
     margin: 10px auto;
     background-color: rgba(255,255,255, 0.3);
     width: 100%;
@@ -156,7 +158,7 @@ export const ColorBoxMgsTitle = styled.h2`
 export const ColorBoxMgsSubtitle = styled.h4`
     text-shadow: 1px 2px black;
     font-weight: 400;
-    color: white;
+    color : ${props => props.color ? '#FFF' : '#000'};
     margin: 0 auto;
     font-size: 2rem;
     font-weight: 100;

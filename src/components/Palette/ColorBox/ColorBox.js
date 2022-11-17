@@ -8,11 +8,13 @@ import { ColorBoxBtn,ColorBoxBtnWrapper,
          ColorBoxOverlay,ColorBoxMgsWrapper,
          ColorBoxMgsTitle,ColorBoxMgsSubtitle } from "./ColorBox.elements";
 import { Link } from "react-router-dom";
+import chroma from "chroma-js";
 
 function ColorBox(props){
 
     const [isOverlay,setIsOverley] = useState(false);
     const {background, name, moreUrl, showLink} = props;
+    const contrast = chroma.contrast(background, "black") < 6;
 
     const changeOverlayState = () => {
         setIsOverley(!isOverlay, 
@@ -27,21 +29,21 @@ function ColorBox(props){
                 <ColorBoxOverlay background={background} overlay={isOverlay}></ColorBoxOverlay>
 
                 <ColorBoxMgsWrapper overlay={isOverlay}>
-                        <ColorBoxMgsTitle>COPIED!</ColorBoxMgsTitle>
-                        <ColorBoxMgsSubtitle>{background}</ColorBoxMgsSubtitle>
+                        <ColorBoxMgsTitle color={contrast}>COPIED!</ColorBoxMgsTitle>
+                        <ColorBoxMgsSubtitle color={contrast}>{background}</ColorBoxMgsSubtitle>
                 </ColorBoxMgsWrapper>
 
                 <ColorBoxBtnWrapper>
-                    <ColorBoxBtn>
+                    <ColorBoxBtn color={contrast}>
                         COPY
                     </ColorBoxBtn>      
                 </ColorBoxBtnWrapper>
 
                 <ColorBoxInfoWrapper>
-                    <ColorBoxInfoName>
+                    <ColorBoxInfoName color={contrast}>
                         {name}
                     </ColorBoxInfoName>
-                    <ColorBoxInfoMore>
+                    <ColorBoxInfoMore color={contrast}>
                         {showLink && 
                             <Link to={moreUrl} onClick={(e) => e.stopPropagation()}>        
                                     MORE
