@@ -6,6 +6,9 @@ import { Route, Routes, useParams } from 'react-router-dom';
 import PaletteList from "./components/Palette/PaletteList";
 import GlobalStyle from "./gobalStyles";
 import SingleColor from "./components/Palette/SingleColor/SingleColor";
+import NewPaletteForm from "./components/Palette/NewPaletteForm/NewPaletteForm";
+import PersistentDrawerLeft from "./components/util/PersistentDrawerLeft";
+
 
 function App(){
 
@@ -23,12 +26,14 @@ function App(){
   };
   return (
     <>
-    <GlobalStyle/>
-    <Routes>
-      <Route exact path="/" element={<PaletteList palettes={seedColors}/>} />
-      <Route exact path="/palette/:id" element={ <PaletteComponentWrapper />} />
-      <Route exact path="/palette/:id/:colorId" element={ <SingleColorWrapper />} />
-    </Routes> 
+      <GlobalStyle/>
+      <Routes>
+        <Route exact path="/" element={<PaletteList palettes={seedColors}/>} />
+        <Route exact path="/palette/new" element={ <NewPaletteForm/>} />
+        <Route exact path="/palette/news" element={ <PersistentDrawerLeft />} />
+        <Route exact path="/palette/:id" element={ <PaletteComponentWrapper />} />
+        <Route exact path="/palette/:id/:colorId" element={ <SingleColorWrapper />} />
+      </Routes> 
     </>   
   );
 }

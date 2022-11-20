@@ -20,6 +20,7 @@ export const PaletteListWrapper = styled.div`
 export const PaletteListNav= styled.nav`
     display:flex;
     justify-content: space-between;
+    padding: 30px 0;
 `;
 export const PaletteListTitle = styled.h1`
     color:#fff;
@@ -32,3 +33,12 @@ export const PaletteListPalettes = styled.div`
     grid-template-columns: repeat(3,30%);
     grid-gap: 5%;
 `;
+export const PaletteListNew = styled.div`
+    
+    & a{
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+    }
+`;
+

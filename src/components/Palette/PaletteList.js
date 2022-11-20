@@ -4,8 +4,10 @@ import { PaletteListContainer,
          PaletteListNav, 
          PaletteListPalettes, 
          PaletteListTitle, 
-         PaletteListWrapper } from "./PaletteList.elements";
+         PaletteListWrapper,
+         PaletteListNew } from "./PaletteList.elements";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 function PaletteList (props){
     const navigate = useNavigate();
@@ -18,6 +20,11 @@ function PaletteList (props){
             <PaletteListWrapper>
                 <PaletteListNav>
                     <PaletteListTitle>React Color</PaletteListTitle>
+                    <PaletteListNew>
+                        <Link to="/palette/new">
+                            Criar nova paleta
+                        </Link>
+                    </PaletteListNew>
                 </PaletteListNav>
                     <PaletteListPalettes>
                         {palettes}
