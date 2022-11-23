@@ -7,7 +7,7 @@ import PaletteList from "./components/Palette/PaletteList";
 import GlobalStyle from "./gobalStyles";
 import SingleColor from "./components/Palette/SingleColor/SingleColor";
 import NewPaletteForm from "./components/Palette/NewPaletteForm/NewPaletteForm";
-import PersistentDrawerLeft from "./components/util/PersistentDrawerLeft";
+import PersistentDrawerLeft from "./components/util/Drawer/PersistentDrawerLeft";
 
 
 function App(){
