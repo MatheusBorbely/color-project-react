@@ -9,7 +9,8 @@ export const Palettes = styled.section`
 
 export const PaletteColors = styled.div`
     height: 90%;
-    display: flex;
-    flex-wrap: wrap; 
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 25% 25% 25% 25% 25%;
+    display: grid;
 
 `;

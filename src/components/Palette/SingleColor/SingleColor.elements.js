@@ -10,11 +10,9 @@ export const SingleColorContainer = styled.section`
 
 export const SingleColorBoxes = styled.div`
     height: 90%;
-    display: flex;
-    flex-wrap: wrap;
-    ${ColorBoxContainer} {
-        height: 50%;
-    }
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 50% 50% 50% 50% 50%; 
+    display: grid;
 `;
 
 export const SingleColorGoBack = styled(ColorBoxContainer)`

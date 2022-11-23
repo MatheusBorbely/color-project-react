@@ -63,8 +63,8 @@ export const ColorBoxBtn = styled.button`
 `;
 
 export const ColorBoxContainer = styled.div`
-    width: 20%;
-    height: 25%;
+    width: 100%;
+    height: 100%;
     cursor: pointer;
     display: inline-flex;
     position: relative;

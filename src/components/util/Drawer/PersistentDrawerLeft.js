@@ -12,7 +12,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { ChromePicker } from 'react-color';
 import { Button } from '@mui/material';
 
-import {Main, AppBar, DrawerHeader} from './PersistentDrawerLeft.elements'
+import {Main, AppBar, DrawerHeader, WrapperBtn, WrapperContainer} from './PersistentDrawerLeft.elements'
 import { DraggableColorBox } from '../../Palette/DraggableColorBox/DraggableColorBox';
 
 
@@ -57,40 +57,52 @@ export default function PersistentDrawerLeft() {
           </Typography>
         </Toolbar>
       </AppBar>
+      <WrapperContainer>
       <Drawer
         sx={{
           width: drawerWidth,
+          alignItems: `center`,
           flexShrink: 0,
           '& .MuiDrawer-paper': {
             width: drawerWidth,
             boxSizing: 'border-box',
+            alignItems: `center`,
+            gap: `30px`,
+            paddingTop: `70px`
           },
         }}
         variant="persistent"
         anchor="left"
         open={open}
       >
-        <DrawerHeader>
+        <DrawerHeader
+          sx={{
+            position: `absolute`,
+            top: 0,
+            right: 0
+          }}
+        >
           <IconButton onClick={handleDrawerClose}>
-            <ChevronLeftIcon />
+            <ChevronLeftIcon/>
           </IconButton>
         </DrawerHeader>
-        <Typography variant='h4'>Estilize sua paleta</Typography>
-        <div>
-          <Button variant='contained' color='secondary'>Limpar Paleta</Button>
-          <Button variant='contained' color='primary'>Cor Aleatoria</Button>
-        </div>
+        <Typography variant='h5'>Estilize sua paleta</Typography>
+        <WrapperBtn>
+          <Button variant='contained' color='secondary'>Limpar</Button>
+          <Button variant='contained' color='primary'>Aleatoria</Button>
+        </WrapperBtn>
         <ChromePicker color={currentColor} onChangeComplete={(newColor) => updateColor(newColor)}/>
         <Button variant='contained' color='primary' style={{ backgroundColor: currentColor}} onClick={addNewColor}>Adicionar Cor</Button>
         <Divider />
       </Drawer>
       <Main open={open}>
-        <DrawerHeader />
+        
      
         {colors.map( c => <DraggableColorBox color={c}/>)}
       
         
       </Main>
+      </WrapperContainer>
     </Box>
   );
 }

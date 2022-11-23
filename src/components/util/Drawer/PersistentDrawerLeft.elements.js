@@ -1,14 +1,18 @@
 import { styled } from '@mui/material/styles';
 import MuiAppBar from '@mui/material/AppBar';
 
+
 const drawerWidth = 240;
+
+
 
 export const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
       flexGrow: 1,
-      height:`calc(100vh - 64px)`,
-      display:"flex",
-      flexWrap: 'wrap',
+      height:`100vh`,
+      gridTemplateColumns: `20% 20% 20% 20% 20%`,
+      gridTemplateRows: `25% 25% 25% 25% 25%`,
+      display: 'grid',
       paddingTop: `64px`,
       overflow:'hidden',
       transition: theme.transitions.create('margin', {
@@ -50,3 +54,20 @@ export const DrawerHeader = styled('div')(({ theme }) => ({
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
 }));
+
+export const WrapperBtn = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: `space-around`,
+  width: `100%`
+
+}));
+
+export const WrapperContainer = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: `center`,
+  width: `100%`
+}));
+
+
