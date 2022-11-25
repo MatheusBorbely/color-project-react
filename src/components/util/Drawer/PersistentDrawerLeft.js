@@ -14,11 +14,14 @@ import { Button } from '@mui/material';
 
 import {Main, AppBar, DrawerHeader, WrapperBtn, WrapperContainer} from './PersistentDrawerLeft.elements'
 import { DraggableColorBox } from '../../Palette/DraggableColorBox/DraggableColorBox';
+import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator';
 
 
 export default function PersistentDrawerLeft() {
   const [open, setOpen] = useState(false);
   const [currentColor, setCurrentColor] = useState('blue');
+  const [boxesColor, setBoxesColor] = useState([]);
+  const [currentName, setCurrentName] = useState('');
   const [colors, setColors] = useState([]);
   const drawerWidth = 240;
 
@@ -35,7 +38,15 @@ export default function PersistentDrawerLeft() {
   };
 
   const addNewColor = () => {
-    setColors( (oldColors) => [...oldColors, currentColor])
+    const newBox = {
+      color: currentColor,
+      name: currentName
+    }
+
+    setBoxesColor( (oldBoxes) => [...oldBoxes, newBox])
+  }
+  const hadleChange = (evt) => {
+    setCurrentName(evt.target.value)
   }
 
   return (
@@ -92,13 +103,20 @@ export default function PersistentDrawerLeft() {
           <Button variant='contained' color='primary'>Aleatoria</Button>
         </WrapperBtn>
         <ChromePicker color={currentColor} onChangeComplete={(newColor) => updateColor(newColor)}/>
-        <Button variant='contained' color='primary' style={{ backgroundColor: currentColor}} onClick={addNewColor}>Adicionar Cor</Button>
+        <ValidatorForm onSubmit={addNewColor}>
+          <TextValidator 
+            value={currentName}
+            onChange={hadleChange}
+          />
+            <Button type='submit' variant='contained' color='primary' style={{ backgroundColor: currentColor}}>Adicionar Cor</Button>
+        </ValidatorForm>
+        
         <Divider />
       </Drawer>
       <Main open={open}>
         
      
-        {colors.map( c => <DraggableColorBox color={c}/>)}
+        {boxesColor.map( box => <DraggableColorBox background={box.color} name={box.name} />)}
       
         
       </Main>
