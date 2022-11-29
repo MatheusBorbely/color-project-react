@@ -21,7 +21,7 @@ function PaletteList (props){
                 <PaletteListNav>
                     <PaletteListTitle>React Color</PaletteListTitle>
                     <PaletteListNew>
-                        <Link to="/palette/new">
+                        <Link to="/palette/news">
                             Criar nova paleta
                         </Link>
                     </PaletteListNew>

@@ -8,14 +8,17 @@ import GlobalStyle from "./gobalStyles";
 import SingleColor from "./components/Palette/SingleColor/SingleColor";
 import NewPaletteForm from "./components/Palette/NewPaletteForm/NewPaletteForm";
 import PersistentDrawerLeft from "./components/util/Drawer/PersistentDrawerLeft";
+import { useState } from "react";
 
 
 function App(){
-
-  const findPalette = id => seedColors.find(palette => 
+  const [palettes, setPalettes] = useState(seedColors)
+  const findPalette = id => palettes.find(palette => 
       palette.id === id
   );
-
+  const savePalette = (newPalette) => {
+    setPalettes((oldPalette) => [...oldPalette, newPalette])
+  }
   const PaletteComponentWrapper = () => {
       const { id } = useParams();
       return <Palette palette={generatePalette(findPalette(id))} />;
@@ -28,9 +31,9 @@ function App(){
     <>
       <GlobalStyle/>
       <Routes>
-        <Route exact path="/" element={<PaletteList palettes={seedColors}/>} />
+        <Route exact path="/" element={<PaletteList palettes={palettes}/>} />
         <Route exact path="/palette/new" element={ <NewPaletteForm/>} />
-        <Route exact path="/palette/news" element={ <PersistentDrawerLeft />} />
+        <Route exact path="/palette/news" element={ <PersistentDrawerLeft savePalette={savePalette} />} />
         <Route exact path="/palette/:id" element={ <PaletteComponentWrapper />} />
         <Route exact path="/palette/:id/:colorId" element={ <SingleColorWrapper />} />
       </Routes> 

@@ -8,6 +8,8 @@ export const PaletteListContainer = styled.section`
     align-items: flex-start;
     justify-content: center;
     height: 100vh;
+    overflow: hidden;
+    padding: 20px 0;
 `;
 
 export const PaletteListWrapper = styled.div`
@@ -20,7 +22,7 @@ export const PaletteListWrapper = styled.div`
 export const PaletteListNav= styled.nav`
     display:flex;
     justify-content: space-between;
-    padding: 30px 0;
+
 `;
 export const PaletteListTitle = styled.h1`
     color:#fff;

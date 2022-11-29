@@ -1,12 +1,11 @@
 import React from "react";
 import {NewPaletteFormContainer} from "./NewPaletteForm.elements";
 
-function NewPaletteForm(props) {
-    const {} = props;
+function NewPaletteForm() {
+
     return (
         <NewPaletteFormContainer>
             <span>ola</span>
-            
         </NewPaletteFormContainer>
     );
     
