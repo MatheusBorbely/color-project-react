@@ -54,11 +54,32 @@ export const MoreColor = styled.div`
     border: 2px dotted #fff;
     background:
       linear-gradient(#fff 0 0) padding-box,
-      linear-gradient(to bottom, #4fc3f7, #ab5ca4 49%, #ff512f) border-box;
-    font-size: 16px;
+      linear-gradient(to bottom, #FF0000, #FF7F00, #FFFF00, #00FF00, #00FFFF,#0000FF,#8B00FF) border-box;
+    font-size: 18px;
+    font-weight: bold;
     & svg {
       font-size: 2.5rem;
+      fill: linear-gradient(to bottom, #FF0000, #FF7F00, #FFFF00, #00FF00, #00FFFF,#0000FF,#8B00FF);
     }
+    background-image: linear-gradient(to right, #FF0000, #FF7F00, #FFFF00, #00FF00, #00FFFF,#0000FF,#8B00FF);
+    color: black;
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    /* Adicionado: */
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    animation: kvAnimate 8s linear Infinite;
+    
+    @keyframes kvAnimate { 
+        0% {
+            background-position: 0%;
+        }
+        100% {
+            background-position: -400%;
+        }
+    }
+
 `;
 
 
