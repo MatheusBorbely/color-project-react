@@ -8,7 +8,7 @@ import { Nav,
         NavbarLevel,
         SliderComponent,
         NavSelect,
-        NavLevelCurrent } from "./NavBar.elements";
+        NavLevelCurrent } from "./PaletteNavBar.elements";
 
 //Dependencias axiliares
 import MenuItem from '@mui/material/MenuItem';

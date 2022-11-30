@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ColorBoxContainer, ColorBoxBtn} from '../ColorBox/ColorBox.elements';
+import { ColorBoxContainer, ColorBoxBtn} from '../Palette/ColorBox/ColorBox.elements';
 
 export const SingleColorContainer = styled.section`
     height: 100vh;

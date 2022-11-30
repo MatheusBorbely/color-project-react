@@ -3,11 +3,10 @@ import seedColors from "./components/util/seedColors";
 import Palette from "./components/Palette/Palette";
 import {generatePalette} from "./components/util/colorHelpers";
 import { Route, Routes, useParams } from 'react-router-dom';
-import PaletteList from "./components/Palette/PaletteList";
+import PaletteList from "./components/PalleteList/PaletteList";
 import GlobalStyle from "./gobalStyles";
-import SingleColor from "./components/Palette/SingleColor/SingleColor";
-import NewPaletteForm from "./components/Palette/NewPaletteForm/NewPaletteForm";
-import PersistentDrawerLeft from "./components/util/Drawer/PersistentDrawerLeft";
+import SingleColor from "./components/SingleColor/SingleColor";
+import NewPaletteForm from "./components/NewPalette/NewPaletteForm/NewPaletteForm";
 import { useState } from "react";
 
 
@@ -32,8 +31,7 @@ function App(){
       <GlobalStyle/>
       <Routes>
         <Route exact path="/" element={<PaletteList palettes={palettes}/>} />
-        <Route exact path="/palette/new" element={ <NewPaletteForm />} />
-        <Route exact path="/palette/news" element={ <PersistentDrawerLeft savePalette={savePalette} palettes={palettes} />} />
+        <Route exact path="/palette/new" element={ <NewPaletteForm savePalette={savePalette} palettes={palettes} />} />
         <Route exact path="/palette/:id" element={ <PaletteComponentWrapper />} />
         <Route exact path="/palette/:id/:colorId" element={ <SingleColorWrapper />} />
       </Routes> 

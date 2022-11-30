@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ColorBoxContainer } from '../ColorBox/ColorBox.elements';
+import { ColorBoxContainer } from '../../Palette/ColorBox/ColorBox.elements';
 
 export const DraggableColorBoxContainer = styled(ColorBoxContainer)`
     justify-content: space-between;

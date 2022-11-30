@@ -6,36 +6,25 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import { ChromePicker } from 'react-color';
-import { Button } from '@mui/material';
-import {Main, DrawerHeader, WrapperBtn, WrapperContainer} from './PersistentDrawerLeft.elements'
-import { DraggableColorBox } from '../../Palette/DraggableColorBox/DraggableColorBox';
-import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator';
-import { useEffect } from 'react';
+import {Main, DrawerHeader, WrapperContainer, MoreColor} from './NewPaletteForm.elements'
+import { DraggableColorBox } from '../DraggableColorBox/DraggableColorBox';
 import chroma from "chroma-js";
 import { useNavigate } from "react-router";
-import NewPaletteNav from '../../NavBar/NewPaletteNav/NewPaletteNav';
+import NewPaletteNav from '../../NavBar/NewPaletteNavBar/NewPaletteNavBar';
+import ColorPickerForm from '../ColorPickerForm/ColorPickerForm';
+import drawerWidth from '../../util/drawerWidth';
+import AddIcon from '@mui/icons-material/Add';
 
-
-export default function PersistentDrawerLeft(props) {
+export default function NewPaletteForm(props) {
   const {savePalette, palettes} = props;
   const [open, setOpen] = useState(false);
-  const [currentColor, setCurrentColor] = useState('blue');
+  const [currentColor, setCurrentColor] = useState('black');
   const [boxesColor, setBoxesColor] = useState([]);
   const [currentName, setCurrentName] = useState('');
   const maxColors = 20;
   const fullPalette = boxesColor.length >= maxColors;
   const navigate = useNavigate();
-  const drawerWidth = 240;
 
-  useEffect(() => {
-    ValidatorForm.addValidationRule('isColorNameUnique', (value) => 
-      boxesColor.every( ({name}) => value.toLowerCase() !== name.toLowerCase())
-    );
-    ValidatorForm.addValidationRule('isColorUnique', (value) => 
-      boxesColor.every( ({color}) => currentColor !== color.toLowerCase())
-    );
-  });
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -119,25 +108,35 @@ export default function PersistentDrawerLeft(props) {
           </IconButton>
         </DrawerHeader>
         <Typography variant='h5'>Estilize sua paleta</Typography>
-        <WrapperBtn>
-          <Button variant='contained' color='secondary' onClick={clearPalettes}>Limpar</Button>
-          <Button variant='contained' color='primary' onClick={getRandomColor}>Aleatoria</Button>
-        </WrapperBtn>
-        <ChromePicker color={currentColor} onChangeComplete={(newColor) => updateColor(newColor)}/>
-        <ValidatorForm onSubmit={addNewColor}>
-          <TextValidator 
-            value={currentName}
-            onChange={handleChange}
-            validators={['required', 'isColorNameUnique', 'isColorUnique']}
-            errorMessages={['Preencha o nome', 'O nome deve ser único','A cor deve ser única']}
-          />
-            <Button type='submit' disabled={fullPalette} variant='contained' color='primary' style={{ color: colorText(currentColor) ,  backgroundColor: currentColor}}>{ fullPalette ? 'Paleta Cheia':'Adicionar Cor' }</Button>
-        </ValidatorForm>
+        <ColorPickerForm 
+            clearPalettes={clearPalettes}
+            getRandomColor={getRandomColor}
+            currentColor={currentColor} 
+            updateColor={updateColor}
+            addNewColor={addNewColor}
+            currentName={currentName}
+            handleChange={handleChange}
+            fullPalette={fullPalette}
+            colorText={colorText}
+            boxesColor={boxesColor}
+         />
     
         <Divider />
       </Drawer>
       <Main open={open}>
         {boxesColor.map( box => <DraggableColorBox key={box.name} background={box.color} name={box.name} colorText={colorText} removeBox={removeBox} />)}
+        {!fullPalette && <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            onClick={handleDrawerOpen}
+            edge="start"
+            sx={{ mr: 2, marginLeft:'8px', marginRight: '8px',padding: '0px',marginTop:'4px', ...(open && { display: 'none' }) }}
+        >
+          <MoreColor>
+            <AddIcon/>
+            Adicionar Cor
+          </MoreColor>
+        </IconButton>}
       </Main>
       </WrapperContainer>
     </Box>

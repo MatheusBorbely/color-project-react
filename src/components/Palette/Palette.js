@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import ColorBox from "./ColorBox/ColorBox.js";
-import NavBar from "../NavBar/NavBar.js";
+import PaletteNavBar from "../NavBar/PaletteNavBar/PaletteNavBar.js";
 import Footer from "../Footer/Footer.js";
 import {Palettes,
         PaletteColors,
@@ -29,7 +29,7 @@ function Palette(props){
 
     return(
         <Palettes>
-            <NavBar level={level} changeLevel={changeLevel} handleChange={changeFormat} format={format} changed={changed} closeSnackerBar={closeSnackerBar} showLevel/>
+            <PaletteNavBar level={level} changeLevel={changeLevel} handleChange={changeFormat} format={format} changed={changed} closeSnackerBar={closeSnackerBar} showLevel/>
             <PaletteColors>
                 {colorBoxes}
             </PaletteColors>

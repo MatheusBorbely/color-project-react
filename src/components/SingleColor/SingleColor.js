@@ -1,8 +1,8 @@
 import {React, useState} from "react";
 import { SingleColorContainer, SingleColorBoxes, SingleColorGoBack, SingleColorGoBackBtn } from "./SingleColor.elements";
-import ColorBox from "../ColorBox/ColorBox.js";
-import NavBar from "../../NavBar/NavBar";
-import Footer from "../../Footer/Footer";
+import ColorBox from "../Palette/ColorBox/ColorBox.js";
+import PaletteNavBar from "../NavBar/PaletteNavBar/PaletteNavBar.js";
+import Footer from "../Footer/Footer";
 import { Link } from "react-router-dom";
 
 
@@ -38,9 +38,8 @@ function SingleColor(props) {
     ))
     return (
         <>
-            
             <SingleColorContainer>
-                <NavBar handleChange={changeFormat} format={format} changed={changed} closeSnackerBar={closeSnackerBar} showLevel={false} />
+                <PaletteNavBar handleChange={changeFormat} format={format} changed={changed} closeSnackerBar={closeSnackerBar} showLevel={false} />
                 <SingleColorBoxes>
                     {colorBoxes}
                     <SingleColorGoBack>
@@ -51,10 +50,7 @@ function SingleColor(props) {
                 </SingleColorBoxes>
                 <Footer name={palette.paletteName} emoji={palette.emoji}/>
             </SingleColorContainer>
-            
         </>
     );
-    
 }
-
 export default SingleColor;
