@@ -32,8 +32,8 @@ function App(){
       <GlobalStyle/>
       <Routes>
         <Route exact path="/" element={<PaletteList palettes={palettes}/>} />
-        <Route exact path="/palette/new" element={ <NewPaletteForm/>} />
-        <Route exact path="/palette/news" element={ <PersistentDrawerLeft savePalette={savePalette} />} />
+        <Route exact path="/palette/new" element={ <NewPaletteForm />} />
+        <Route exact path="/palette/news" element={ <PersistentDrawerLeft savePalette={savePalette} palettes={palettes} />} />
         <Route exact path="/palette/:id" element={ <PaletteComponentWrapper />} />
         <Route exact path="/palette/:id/:colorId" element={ <SingleColorWrapper />} />
       </Routes> 

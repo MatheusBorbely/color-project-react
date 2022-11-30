@@ -2,27 +2,23 @@ import * as React from 'react';
 import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import CssBaseline from '@mui/material/CssBaseline';
-import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { ChromePicker } from 'react-color';
 import { Button } from '@mui/material';
-
-import {Main, AppBar, DrawerHeader, WrapperBtn, WrapperContainer} from './PersistentDrawerLeft.elements'
+import {Main, DrawerHeader, WrapperBtn, WrapperContainer} from './PersistentDrawerLeft.elements'
 import { DraggableColorBox } from '../../Palette/DraggableColorBox/DraggableColorBox';
 import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator';
 import { useEffect } from 'react';
 import chroma from "chroma-js";
 import { useNavigate } from "react-router";
-import { Link } from 'react-router-dom';
+import NewPaletteNav from '../../NavBar/NewPaletteNav/NewPaletteNav';
 
 
 export default function PersistentDrawerLeft(props) {
-  const {savePalette} = props;
+  const {savePalette, palettes} = props;
   const [open, setOpen] = useState(false);
   const [currentColor, setCurrentColor] = useState('blue');
   const [boxesColor, setBoxesColor] = useState([]);
@@ -63,8 +59,7 @@ export default function PersistentDrawerLeft(props) {
   const handleChange = (evt) => {
     setCurrentName(evt.target.value)
   }
-  const handleSave = () => {
-    let newName = "mátheus bore"
+  const handleSave = (newName) => {
     const newPalette = {
       paletteName: newName,
       id: newName.toLocaleLowerCase().replace(/ /g,"-"),
@@ -93,27 +88,7 @@ export default function PersistentDrawerLeft(props) {
   }
   return (
     <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <AppBar position="fixed" open={open} color='default'>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{ mr: 2, ...(open && { display: 'none' }) }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Persistent drawer
-          </Typography>
-          <Button variant='contained' onClick={handleSave}>Salvar Paleta</Button>
-          <Link to='/'>
-            <Button variant='contained' >GO BACK</Button>
-          </Link>
-        </Toolbar>
-      </AppBar>
+      <NewPaletteNav open={open} handleSave={handleSave} handleDrawerOpen={handleDrawerOpen} palettes={palettes}/>
       <WrapperContainer>
       <Drawer
         sx={{
