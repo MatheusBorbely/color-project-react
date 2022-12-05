@@ -48,11 +48,11 @@ export default function NewPaletteForm(props) {
   const handleChange = (evt) => {
     setCurrentName(evt.target.value)
   }
-  const handleSave = (newName) => {
+  const handleSave = (newName, emoji) => {
     const newPalette = {
       paletteName: newName,
       id: newName.toLocaleLowerCase().replace(/ /g,"-"),
-      emoji: "🎨",
+      emoji: emoji,
       colors: boxesColor 
     }
     savePalette(newPalette);

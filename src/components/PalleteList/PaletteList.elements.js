@@ -18,6 +18,8 @@ export const PaletteListWrapper = styled.div`
     justify-content: flex-start;
     flex-direction: column;
     flex-wrap: wrap;
+    height: 100%;
+    gap: 30px;
 `;
 export const PaletteListNav= styled.nav`
     display:flex;
@@ -29,7 +31,7 @@ export const PaletteListTitle = styled.h1`
 `;
 
 
-export const PaletteListPalettes = styled.div`
+export const PaletteListPalettes = styled.ul`
     width:100%;
     display: grid;
     grid-template-columns: repeat(3,30%);

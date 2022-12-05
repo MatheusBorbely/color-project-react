@@ -3,7 +3,7 @@ import drawerWidth from '../../util/drawerWidth';
 import  {styled as style} from '@mui/material/styles';
 import styled  from "styled-components";
 import Toolbar from '@mui/material/Toolbar';
-import { TextValidator as input, ValidatorForm as form } from 'react-material-ui-form-validator';
+
 
 export const AppBar = style(MuiAppBar, {
     shouldForwardProp: (prop) => prop !== 'open',
@@ -35,25 +35,4 @@ export const WrapperNewPalette = styled.div`
     gap: 20px;
     width: 80%;
     justify-content: flex-end;
-`;
-export const ValidatorForm = styled(form)`
-    display:flex;
-    flex-direction: row;
-    gap:30px;
-`;
-export const TextValidator = styled(input)`
-    width: 100%;
-    & div, input{
-        width: 100%;  
-    }
-    & input{
-        padding: 8.5px 14px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    & label{
-        top:-5px;
-    }
-
 `;

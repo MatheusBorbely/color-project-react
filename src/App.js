@@ -1,4 +1,4 @@
-import { React } from "react";
+import { React, useEffect } from "react";
 import seedColors from "./components/util/seedColors";
 import Palette from "./components/Palette/Palette";
 import {generatePalette} from "./components/util/colorHelpers";
@@ -11,10 +11,22 @@ import { useState } from "react";
 
 
 function App(){
-  const [palettes, setPalettes] = useState(seedColors)
+  const savedPalettes = JSON.parse(window.localStorage.getItem("palettes"))
+  const [palettes, setPalettes] = useState(savedPalettes || seedColors)
+
+  useEffect(() => {
+    syncLocalStorage();
+  }, [palettes]);
+
+  const syncLocalStorage = () => {
+    window.localStorage.setItem("palettes", JSON.stringify(palettes))
+  }
   const findPalette = id => palettes.find(palette => 
       palette.id === id
   );
+  const removePalette = (idRemove) => {
+    setPalettes(palettes.filter(({id}) => id !== idRemove))
+  };
   const savePalette = (newPalette) => {
     setPalettes((oldPalette) => [...oldPalette, newPalette])
   }
@@ -30,7 +42,7 @@ function App(){
     <>
       <GlobalStyle/>
       <Routes>
-        <Route exact path="/" element={<PaletteList palettes={palettes}/>} />
+        <Route exact path="/" element={<PaletteList removePalette={removePalette} palettes={palettes}/>} />
         <Route exact path="/palette/new" element={ <NewPaletteForm savePalette={savePalette} palettes={palettes} />} />
         <Route exact path="/palette/:id" element={ <PaletteComponentWrapper />} />
         <Route exact path="/palette/:id/:colorId" element={ <SingleColorWrapper />} />

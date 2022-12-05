@@ -9,12 +9,14 @@ import { PaletteListContainer,
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 
+
 function PaletteList (props){
+    const{palettes, removePalette } = props;
     const navigate = useNavigate();
     const goToPallete = (id) => {
         navigate(`/palette/${id}`)
     }
-    const palettes = props.palettes.map(palette => (<MiniPalette key={palette.id} goToPalette={goToPallete} {...palette} />))
+    const miniPalettes = palettes.map(palette => (<MiniPalette key={palette.id} removePalette={removePalette} goToPalette={goToPallete} {...palette} />))
     return(
         <PaletteListContainer>
             <PaletteListWrapper>
@@ -27,7 +29,7 @@ function PaletteList (props){
                     </PaletteListNew>
                 </PaletteListNav>
                     <PaletteListPalettes>
-                        {palettes}
+                        {miniPalettes} 
                     </PaletteListPalettes>
             </PaletteListWrapper>
         </PaletteListContainer>

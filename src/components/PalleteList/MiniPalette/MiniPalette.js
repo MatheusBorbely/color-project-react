@@ -4,17 +4,24 @@ import {    MiniPaletteContainer,
             MiniPaletteWrapper,
             MiniPaletteName,
             MiniPaletteIcon,
-            MiniPaletteColorsBox
+            MiniPaletteColorsBox,
+            Delete
         } from "./MiniPalette.elements";
 
+
 function MiniPalette(props){
-    const {paletteName, emoji, colors, goToPalette, id} = props;
+    const {paletteName, emoji, colors, goToPalette, id, removePalette} = props;
     const miniColors = colors.map( (c) => <MiniPaletteColors background={c.color}/>)
     const handleClick = () => {
         goToPalette(id);
     }
+    const deletePalette = (e) => {
+        e.stopPropagation();
+        removePalette(id);
+    }
     return (
         <MiniPaletteContainer onClick={handleClick}>
+            <Delete onClick={deletePalette}/>
             <MiniPaletteColorsBox>
                 {miniColors}
             </MiniPaletteColorsBox>

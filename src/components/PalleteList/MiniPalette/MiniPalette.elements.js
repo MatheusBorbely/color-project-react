@@ -1,7 +1,22 @@
 import styled from "styled-components";
+import { Delete as del } from '@mui/icons-material';
 
+export const Delete = styled(del)`
+    position: absolute;
+    z-index: 99;
+    right: 0;
+    background: red;
+    padding: 10px;
+    box-sizing: content-box;
+    top: 0;
+    color: white;
+    opacity: 0;
+    border-radius: 0px 0px 0px 10px;
+    transition: opacity 0.5s ease-in-out !important;
+    
+`;
 
-export const MiniPaletteContainer = styled.section`
+export const MiniPaletteContainer = styled.li`
     border: 1px solid black;
     position: relative;
     overflow: hidden;
@@ -10,8 +25,10 @@ export const MiniPaletteContainer = styled.section`
     background-color: white;
     &:hover{
         cursor: pointer;
-    }
-    
+        ${Delete} {
+            opacity: 1;
+        }
+    }  
 `;
 export const MiniPaletteColors = styled.div`
     background: ${props => props.background};
