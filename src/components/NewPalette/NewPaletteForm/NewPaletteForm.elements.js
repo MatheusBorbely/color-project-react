@@ -1,8 +1,9 @@
 import  {styled as style} from '@mui/material/styles';
 import styled  from "styled-components";
 import drawerWidth from '../../util/drawerWidth';
+import { device } from '../../util/Device';
 
-export const Main = style('main', { shouldForwardProp: (prop) => prop !== 'open' })(
+const MainConteiner = style('main', { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
       flexGrow: 1,
       height:`100vh`,
@@ -41,6 +42,17 @@ export const WrapperContainer = style('div')(({ theme }) => ({
   width: `100%`
 }));
 
+export const Main = styled(MainConteiner)`
+  ${device.tablet}{
+    grid-template-columns: repeat(2, 50%) !important;
+    grid-template-rows:repeat(10, 20%) !important;
+  }
+  ${device.mobile}{
+    padding-top: 56px !important;
+    grid-template-columns: repeat(1, 100%) !important;
+    grid-template-rows:repeat(20, 5%) !important;
+  }
+`
 
 export const MoreColor = styled.div`
     display:flex;
@@ -78,6 +90,9 @@ export const MoreColor = styled.div`
         100% {
             background-position: -400%;
         }
+    }
+    ${device.mobile}{
+      flex-direction:row;
     }
 
 `;
