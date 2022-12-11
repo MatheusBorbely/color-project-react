@@ -32,6 +32,11 @@ export const SingleColorGoBack = styled(ColorBoxContainer)`
     background: black;
     align-items: center;
     justify-content: center;
+    ${device.mobile}{
+        min-height: 70px;
+    }
+    
+    
 `;
 
 export const SingleColorGoBackBtn = styled(ColorBoxBtn)`

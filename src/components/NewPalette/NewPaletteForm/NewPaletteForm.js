@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import {Main, DrawerHeader, WrapperContainer, MoreColor} from './NewPaletteForm.elements'
+import {Main, DrawerHeader, WrapperContainer, MoreColor,AddColor} from './NewPaletteForm.elements'
 import { DraggableColorBox } from '../DraggableColorBox/DraggableColorBox';
 import chroma from "chroma-js";
 import { useNavigate } from "react-router";
@@ -134,7 +134,7 @@ export default function NewPaletteForm(props) {
         >
           <MoreColor>
             <AddIcon/>
-            Adicionar Cor
+            <AddColor>Adicionar Cor</AddColor>
           </MoreColor>
         </IconButton>}
       </Main>

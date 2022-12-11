@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../../util/Device';
 
 export const Nav = styled.header`
     background: transparent;
@@ -18,6 +19,9 @@ export const NavLogo = styled.div`
         text-decoration: none;
         color: black;
         font-weight: 600;
+    }
+    ${device.mobileL}{
+        display: none;
     }
 `;
 export const SliderComponent = styled.div`
@@ -47,6 +51,9 @@ export const NavSlider = styled.div`
     display: inline-flex;
     align-items: center;
     gap: 20px;
+    ${device.mobileL}{
+        width: 200px;
+    }
 `;
 export const NavbarLevel = styled.div`
   display: flex;

@@ -43,17 +43,26 @@ export const WrapperContainer = style('div')(({ theme }) => ({
 }));
 
 export const Main = styled(MainConteiner)`
+  ${device.laptop}{
+    grid-template-columns: repeat(4, 25%) !important;
+    grid-template-rows:repeat(5, 20%) !important;
+  }
   ${device.tablet}{
     grid-template-columns: repeat(2, 50%) !important;
     grid-template-rows:repeat(10, 20%) !important;
+    overflow: visible !important;
   }
-  ${device.mobile}{
+  ${device.mobileL}{
     padding-top: 56px !important;
     grid-template-columns: repeat(1, 100%) !important;
     grid-template-rows:repeat(20, 5%) !important;
   }
 `
-
+export const AddColor = styled.span`
+  ${device.mobileL}{
+    display: none;
+  }
+`
 export const MoreColor = styled.div`
     display:flex;
     justify-content: center;

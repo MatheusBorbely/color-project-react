@@ -9,7 +9,6 @@ import { PaletteListContainer,
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 
-
 function PaletteList (props){
     const{palettes, removePalette } = props;
     const navigate = useNavigate();

@@ -35,7 +35,7 @@ export default function ColorPickerForm(props) {
             <Button variant='contained' style={{ color: colorText(currentColor) ,  backgroundColor: currentColor}} onClick={getRandomColor}>Aleatoria</Button>
             </WrapperBtn>
             <ChromePicker width='100%' color={currentColor} onChangeComplete={(newColor) => updateColor(newColor)}/>
-            <ValidatorForm onSubmit={addNewColor}>
+            <ValidatorForm onSubmit={addNewColor} instantValidate={false}>
                 <TextValidator 
                     value={currentName}
                     onChange={handleChange}
